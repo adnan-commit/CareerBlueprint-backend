@@ -12,12 +12,15 @@ Built with scalability, fault tolerance, and clean architecture in mind.
 * 👤 User Registration & Login
 * 🚪 Secure Logout (Token Blacklisting)
 * 🗑️ Delete Account with Cascade Cleanup
-* 📄 AI-Powered Interview Report Generation
+* 📄 AI-Powered Resume Report Generation
 * ⚡ Smart AI Model Switching (Fallback Models)
 * 🧯 Circuit Breaker Pattern (AI Failure Handling)
 * 🛡️ AI Response Guard & Validation
 * 📉 Fallback Report System (if AI fails)
 * 🧱 Clean MVC Architecture
+* 🧑‍💻 Skill Gap Analysis & Resources
+* ⁉️ Technical Question and answers
+* 🗒️ Optimized Resume Generation
 
 ---
 
@@ -74,7 +77,7 @@ NODE_ENV=
 ### 1️⃣ Clone the repository
 
 ```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/adnan-commit/CareerBlueprint-backend
 cd server
 ```
 

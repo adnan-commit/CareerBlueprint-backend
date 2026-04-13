@@ -161,6 +161,6 @@ reportSchema.index({ user: 1, createdAt: -1 });
 
 /* ---------------- MODEL ---------------- */
 
-const reportModel = mongoose.model("Report", reportSchema);
+const Report = mongoose.model("Report", reportSchema);
 
-export default reportModel;
+export default Report;

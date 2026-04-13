@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Report from "./report.model.js";
 
 
 const userSchema = new mongoose.Schema(
@@ -33,8 +34,14 @@ const userSchema = new mongoose.Schema(
   },
 );
 
+userSchema.pre("findOneAndDelete", async function () {
+  const user = await this.model.findOne(this.getQuery());
 
+  if (user) {
+    await Report.deleteMany({ user: user._id });
+  }
+});
 
-const userModel = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-export default userModel;
+export default User;

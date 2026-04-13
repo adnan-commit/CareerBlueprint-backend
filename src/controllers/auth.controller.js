@@ -130,3 +130,40 @@ export const getMe = asyncHandler(async (req, res) => {
     },
   });
 });
+
+/**
+ * @name deleteAccount
+ */
+
+export const deleteAccount = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+
+  if (!userId) {
+    throw new ApiError(401, "Unauthorized");
+  }
+
+  //  This will trigger cascade delete automatically
+  const deletedUser = await User.findByIdAndDelete(userId);
+
+  if (!deletedUser) {
+    throw new ApiError(404, "User not found");
+  }
+
+  //  Blacklist token (optional but best)
+  const token = req.cookies?.token;
+
+  if (token) {
+    await TokenBlacklist.create({
+      token,
+      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    });
+  }
+
+  //  Clear cookie
+  res.clearCookie("token");
+
+  return res.status(200).json({
+    success: true,
+    message: "Account and all related data deleted successfully",
+  });
+});

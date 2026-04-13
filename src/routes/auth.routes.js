@@ -3,7 +3,8 @@ import {
   register,
   login,
   logout,
-  getMe
+  getMe,
+  deleteAccount,
 } from "../controllers/auth.controller.js";
 import { authUser } from "../middlewares/auth.middleware.js";
 import validate from "../middlewares/validate.middleware.js";
@@ -42,5 +43,13 @@ authRouter.post("/logout", logout);
  * @access Private
  */
 authRouter.get("/get-me", authUser, getMe);
+
+/**
+ * @route GET /api/auth/delete-account
+ * @description delete the current logged in user account along with all his reports
+ * @access Private
+ */
+authRouter.delete("/delete-account", authUser, deleteAccount);
+
 
 export default authRouter;

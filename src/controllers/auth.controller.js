@@ -5,6 +5,7 @@ import TokenBlacklist from "../models/blacklist.model.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/apiError.js";
 
+
 /**
  * @name register
  */
@@ -30,9 +31,9 @@ export const register = asyncHandler(async (req, res) => {
   const token = generateToken(user);
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict",
+     httpOnly: true,
+  secure: true, 
+  sameSite: "None",
   });
 
   return res.status(201).json({
@@ -68,9 +69,9 @@ export const login = asyncHandler(async (req, res) => {
   const token = generateToken(user);
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict",
+     httpOnly: true,
+  secure: true, 
+  sameSite: "None",
   });
 
   return res.status(200).json({

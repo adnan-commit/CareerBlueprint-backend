@@ -20,7 +20,7 @@ app.use(cookieParser());
 //  CORS setup
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_URL_DEV],
+    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_URL_DEV, "https://careerblueprint-delta.vercel.app"],
     credentials: true,
   }),
 );

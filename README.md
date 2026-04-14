@@ -118,7 +118,7 @@ http://localhost:5000
 
 ### Flow:
 
-1. User sends resume + job description
+1. User sends resume, job description, targeted company name and self description
 2. Prompt builder generates optimized prompt
 3. AI model generates structured JSON response
 4. Response is validated & normalized
@@ -152,7 +152,7 @@ http://localhost:5000
 | POST   | /api/auth/register | Register user |
 | POST   | /api/auth/login    | Login user    |
 | POST   | /api/auth/logout   | Logout user   |
-| GET    | /api/auth/me       | Get user      |
+| GET    | /api/auth/get-me       | Get user      |
 
 ---
 
@@ -161,6 +161,12 @@ http://localhost:5000
 | Method | Endpoint    | Description        |
 | ------ | ----------- | ------------------ |
 | POST   | /api/report | Generate AI report |
+| POST   | /api/report/:report id | get specific report |
+| get   | /api/report/all | get all reports data |
+| POST   | /api/report/:report id/optimize-resume | get optimize resume content |
+
+
+
 
 ---
 
@@ -183,9 +189,7 @@ http://localhost:5000
 
 ## 🧪 Future Improvements
 
-* Rate limiting
 * Email verification
-* Resume parsing with file upload
 * Caching (Redis)
 * Admin dashboard
 
